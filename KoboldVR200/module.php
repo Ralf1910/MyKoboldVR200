@@ -57,7 +57,7 @@ class KoboldVR200 extends IPSModule {
 			// Variablen aktualisieren
 			$this->MaintainVariable("lastCleaning", "letzte Reinigung", 1, "~UnixTimestampDate", 10, true);
 			$this->MaintainVariable("cleaningToday", "Reinigung steht heute an", 0, "~Switch", 15, true);
-			$this->MaintainVariable("nextCleaning", "nächste Reinigung (String)", 3, "", 10, true);
+			$this->MaintainVariable("nextCleaningString", "nächste Reinigung (String)", 3, "", 10, true);
 			$this->MaintainVariable("nextCleaning", "nächste Reinigung", 1, "~UnixTimestampDate", 10, true);
 			$this->MaintainVariable("version", "Version", 1, "", 10, true);
 			$this->MaintainVariable("reqId", "Requested ID", 1, "", 20, true);

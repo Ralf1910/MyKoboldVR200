@@ -57,6 +57,7 @@ class KoboldVR200 extends IPSModule {
 			// Variablen aktualisieren
 			$this->MaintainVariable("lastCleaning", "letzte Reinigung", 1, "~UnixTimestampDate", 10, true);
 			$this->MaintainVariable("cleaningToday", "Reinigung steht heute an", 0, "~Switch", 15, true);
+			$this->MaintainVariable("nextCleaning", "nächste Reinigung", 1, "~UnixTimestampDate", 10, true);
 			$this->MaintainVariable("version", "Version", 1, "", 10, true);
 			$this->MaintainVariable("reqId", "Requested ID", 1, "", 20, true);
 			$this->MaintainVariable("error", "Fehlermeldung", 3, "", 30, true);
@@ -123,7 +124,8 @@ class KoboldVR200 extends IPSModule {
 			SetValue($this->GetIDForIdent("availableCommandsPause"), $this->ToBoolean($robotState['availableCommands']['pause']));
 			SetValue($this->GetIDForIdent("availableCommandsResume"), $this->ToBoolean($robotState['availableCommands']['resume']));
 			SetValue($this->GetIDForIdent("availableCommandsGoToBase"), $this->ToBoolean($robotState['availableCommands']['goToBase']));
-
+			SetValue($this->GetIDForIdent("cleaningToday"), 3600*$this->ReadPropertyInteger("CleaningInterval") + $this->GetIDForIdent("lastCleaning"));
+			
 			if ((time()-GetValue($this->GetIDForIdent("lastCleaning"))) > 3600*$this->ReadPropertyInteger("CleaningInterval"))
 				SetValue($this->GetIDForIdent("cleaningToday"), true);
 			else

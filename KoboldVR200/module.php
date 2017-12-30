@@ -124,7 +124,7 @@ class KoboldVR200 extends IPSModule {
 			SetValue($this->GetIDForIdent("availableCommandsPause"), $this->ToBoolean($robotState['availableCommands']['pause']));
 			SetValue($this->GetIDForIdent("availableCommandsResume"), $this->ToBoolean($robotState['availableCommands']['resume']));
 			SetValue($this->GetIDForIdent("availableCommandsGoToBase"), $this->ToBoolean($robotState['availableCommands']['goToBase']));
-			SetValue($this->GetIDForIdent("cleaningToday"), 3600*$this->ReadPropertyInteger("CleaningInterval") + $this->GetIDForIdent("lastCleaning"));
+			SetValue($this->GetIDForIdent("cleaningToday"), 3600*$this->ReadPropertyInteger("CleaningInterval") + $this->ReadPropertyInteger("lastCleaning"));
 			
 			if ((time()-GetValue($this->GetIDForIdent("lastCleaning"))) > 3600*$this->ReadPropertyInteger("CleaningInterval"))
 				SetValue($this->GetIDForIdent("cleaningToday"), true);

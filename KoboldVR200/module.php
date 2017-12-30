@@ -274,14 +274,14 @@ class KoboldVR200 extends IPSModule {
 	// Reinigung im Normal Modus starten (muss in der Regel zwischendurch einmal geladen werden
 	public function startCleaning() {
 		$params = array("category" => 2, "mode" => 2, "modifier" => 2);
-		SetValue($this->GetIDForIdent("lastCleaning"), time());
+		SetValue($this->GetIDForIdent("lastCleaning"), time());  // 2do: Nicht setzen, falls Kobold nicht gestartet wurde
 		return $this->doAction("startCleaning", $params);
 	}
 
 	// Reinigung im Eco Modus starten
 	public function startEcoCleaning() {
 		$params = array("category" => 2, "mode" => 1, "modifier" => 2);
-		SetValue($this->GetIDForIdent("lastCleaning"), time());
+		SetValue($this->GetIDForIdent("lastCleaning"), time());  // 2do: Nicht setzen, falls Kobold nicht gestartet wurde
 		return $this->doAction("startCleaning", $params);
 	}
 

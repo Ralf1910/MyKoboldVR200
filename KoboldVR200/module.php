@@ -98,7 +98,7 @@ class KoboldVR200 extends IPSModule {
 
 	public function UpdateKoboldData() {
 		
-		if (Sys_Ping("EG-Wohnzimmer-VR200", 1000 )) {
+		if (Sys_Ping("192.168.251.54", 1000 )) {
 		
 			$robotState = $this->doAction("getRobotState");
 

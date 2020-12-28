@@ -103,28 +103,29 @@ class KoboldVR200 extends IPSModule {
 			$robotState = $this->doAction("getRobotState");
 		
 			// Daten aktualisieren
-			if (isset($robotState['version'])) SetValue($this->GetIDForIdent("version"), $robotState['version']);
-			SetValue($this->GetIDForIdent("reqId"), $robotState['reqId']);
-			SetValue($this->GetIDForIdent("error"), $this->TranslateErrorMessages($robotState['error']));
-			SetValue($this->GetIDForIdent("state"), $robotState['state']);
-			SetValue($this->GetIDForIdent("action"), $robotState['action']);
-			SetValue($this->GetIDForIdent("cleaningCategory"), $robotState['cleaning']['category']);
-			SetValue($this->GetIDForIdent("cleaningMode"), $robotState['cleaning']['mode']);
-			SetValue($this->GetIDForIdent("cleaningModifier"), $robotState['cleaning']['modifier']);
-			SetValue($this->GetIDForIdent("cleaningSpotWidth"), $robotState['cleaning']['spotWidth']);
-			SetValue($this->GetIDForIdent("cleaningSpotHeight"), $robotState['cleaning']['spotHeight']);
-			SetValue($this->GetIDForIdent("detailsIsCharging"), $this->ToBoolean($robotState['details']['isCharging']));
-			SetValue($this->GetIDForIdent("detailsIsDocked"), $this->ToBoolean($robotState['details']['isDocked']));
-			SetValue($this->GetIDForIdent("detailsIsScheduleEnabled"), $this->ToBoolean($robotState['details']['isScheduleEnabled']));
-			SetValue($this->GetIDForIdent("detailsDockHasBeenSeen"), $this->ToBoolean($robotState['details']['dockHasBeenSeen']));
-			SetValue($this->GetIDForIdent("detailsCharge"), $robotState['details']['charge']);
-			SetValue($this->GetIDForIdent("metaModelName"), $robotState['meta']['modelName']);
-			SetValue($this->GetIDForIdent("metaFirmware"), $robotState['meta']['firmware']);
-			SetValue($this->GetIDForIdent("availableCommandsStart"), $this->ToBoolean($robotState['availableCommands']['start']));
-			SetValue($this->GetIDForIdent("availableCommandsStop"), $this->ToBoolean($robotState['availableCommands']['stop']));
-			SetValue($this->GetIDForIdent("availableCommandsPause"), $this->ToBoolean($robotState['availableCommands']['pause']));
-			SetValue($this->GetIDForIdent("availableCommandsResume"), $this->ToBoolean($robotState['availableCommands']['resume']));
-			SetValue($this->GetIDForIdent("availableCommandsGoToBase"), $this->ToBoolean($robotState['availableCommands']['goToBase']));
+			if (isset($robotState['version'])) 			SetValue($this->GetIDForIdent("version"), $robotState['version']);
+			if (isset($robotState['reqId'])) 			SetValue($this->GetIDForIdent("reqId"), $robotState['reqId']);
+			if (isset($robotState['error'])) 			SetValue($this->GetIDForIdent("error"), $this->TranslateErrorMessages($robotState['error']));
+			if (isset($robotState['state'])) 			SetValue($this->GetIDForIdent("state"), $robotState['state']);
+			if (isset($robotState['action'])) 			SetValue($this->GetIDForIdent("action"), $robotState['action']);
+			if (isset($robotState['cleaning']['category'])) 	SetValue($this->GetIDForIdent("cleaningCategory"), $robotState['cleaning']['category']);
+			if (isset($robotState['cleaning']['mode'])) 		SetValue($this->GetIDForIdent("cleaningMode"), $robotState['cleaning']['mode']);
+			if (isset($robotState['cleaning']['modifier'])) 	SetValue($this->GetIDForIdent("cleaningModifier"), $robotState['cleaning']['modifier']);
+			if (isset($robotState['cleaning']['spotWidth'])) 	SetValue($this->GetIDForIdent("cleaningSpotWidth"), $robotState['cleaning']['spotWidth']);
+			if (isset($robotState['cleaning']['spotHeight'])) 	SetValue($this->GetIDForIdent("cleaningSpotHeight"), $robotState['cleaning']['spotHeight']);
+			if (isset($robotState['details']['isCharging'])) 	SetValue($this->GetIDForIdent("detailsIsCharging"), $this->ToBoolean($robotState['details']['isCharging']));
+			if (isset($robotState['details']['isDocked']))		SetValue($this->GetIDForIdent("detailsIsDocked"), $this->ToBoolean($robotState['details']['isDocked']));
+			if (isset($robotState['details']['isScheduleEnabled'])) SetValue($this->GetIDForIdent("detailsIsScheduleEnabled"), $this->ToBoolean($robotState['details']['isScheduleEnabled']));
+			if (isset($robotState['details']['dockHasBeenSeen'])) 	SetValue($this->GetIDForIdent("detailsDockHasBeenSeen"), $this->ToBoolean($robotState['details']['dockHasBeenSeen']));
+			if (isset($robotState['details']['charge'])) 		SetValue($this->GetIDForIdent("detailsCharge"), $robotState['details']['charge']);
+			if (isset($robotState['meta']['modelName'])) 		SetValue($this->GetIDForIdent("metaModelName"), $robotState['meta']['modelName']);
+			if (isset($robotState['meta']['firmware'])) 		SetValue($this->GetIDForIdent("metaFirmware"), $robotState['meta']['firmware']);
+			if (isset($robotState['availableCommands']['start'])) 	SetValue($this->GetIDForIdent("availableCommandsStart"), $this->ToBoolean($robotState['availableCommands']['start']));
+			if (isset($robotState['availableCommands']['stop'])) 	SetValue($this->GetIDForIdent("availableCommandsStop"), $this->ToBoolean($robotState['availableCommands']['stop']));
+			if (isset($robotState['availableCommands']['pause'])) 	SetValue($this->GetIDForIdent("availableCommandsPause"), $this->ToBoolean($robotState['availableCommands']['pause']));
+			if (isset($robotState['availableCommands']['resume'])) 	SetValue($this->GetIDForIdent("availableCommandsResume"), $this->ToBoolean($robotState['availableCommands']['resume']));
+			if (isset($robotState['availableCommands']['goToBase'])) SetValue($this->GetIDForIdent("availableCommandsGoToBase"), $this->ToBoolean($robotState['availableCommands']['goToBase']));
+			
 			SetValue($this->GetIDForIdent("nextCleaning"), 3600*$this->ReadPropertyInteger("CleaningInterval") + GetValue($this->GetIDForIdent("lastCleaning")));
 			
 			if ((time()-GetValue($this->GetIDForIdent("lastCleaning"))) > 3600*$this->ReadPropertyInteger("CleaningInterval")) {

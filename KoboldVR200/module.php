@@ -101,6 +101,8 @@ class KoboldVR200 extends IPSModule {
 	
 		
 			$robotState = $this->doAction("getRobotState");
+		
+			echo $robotState;
 
 			// Daten aktualisieren
 			SetValue($this->GetIDForIdent("version"), $robotState['version']);
